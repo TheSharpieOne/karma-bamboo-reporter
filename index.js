@@ -12,6 +12,7 @@ var bambooReporter = function (baseReporterDecorator) {
     };
 
     this.onRunStart = function () {
+        this._browsers = [];
         if (fs.existsSync(filename)) {
             fs.unlinkSync(filename);    
         }
