@@ -1,10 +1,17 @@
 {
-  "name": "karma-bamboo-reporter",
+  "name": "karma-atlassian-bamboo-reporter",
   "version": "0.0.1",
+  "author": "TheSharpieOne",
+  "license": "MIT",
+  "homepage": "https://github.com/TheSharpieOne/karma-bamboo-reporter",
   "description": "A Karma plugin. Report results in bamboo json format.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository":{
+      "type": "git",
+      "url": "git://github.com/TheSharpieOne/karma-bamboo-reporter.git"
   },
   "keywords": [
     "karma-plugin",
