@@ -1,6 +1,6 @@
 {
   "name": "karma-atlassian-bamboo-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "TheSharpieOne",
   "license": "MIT",
   "homepage": "https://github.com/TheSharpieOne/karma-bamboo-reporter",

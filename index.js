@@ -1,12 +1,12 @@
-var os = require('os')
-    , path = require('path')
-    , fs = require('fs')
-    , filename = 'mocha.json'; // because the bamboo plugin looks here....
+var fs = require('fs')
+    , filename = 'mocha.json';
 
 
-var bambooReporter = function (baseReporterDecorator) {
+var bambooReporter = function (baseReporterDecorator, config) {
     baseReporterDecorator(this);
-
+    
+    filename = config && config.filename || filename;
+    
     var results = {
         time: 0, tests: [], failures: [], passes: [], skips: []
     };
@@ -49,7 +49,7 @@ function clean(test) {
     return o;
 }
 
-bambooReporter.$inject = ['baseReporterDecorator'];
+bambooReporter.$inject = ['baseReporterDecorator', 'config.bambooReporter'];
 
 // PUBLISH DI MODULE
 module.exports = {
