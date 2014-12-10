@@ -5,14 +5,14 @@ A quick an dirty karma reporter that integrates with bamboo via https://marketpl
 
 Install
 ------------
-`npm install karma-atlassian-bamboo-reporter`
+`npm install karma-bamboo-reporter`
 
 Usage
 ------------
 ```
 ...
 
-reporters: ['progress', 'bamboo'],
+reporters: ['bamboo'],
 
 bambooReporter:{
     filename: 'util.mocha.json' //optional, defaults to "mocha.json"
