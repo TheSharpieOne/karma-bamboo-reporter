@@ -1,12 +1,14 @@
 var fs = require('fs')
     , filename = 'mocha.json';
 
+var fE;
 
-var bambooReporter = function (baseReporterDecorator, config) {
+var bambooReporter = function (baseReporterDecorator, config, formatError) {
+    fE = formatError;
     baseReporterDecorator(this);
-    
+
     filename = config && config.filename || filename;
-    
+
     var results = {
         time: 0, tests: [], failures: [], passes: [], skips: []
     };
@@ -14,7 +16,7 @@ var bambooReporter = function (baseReporterDecorator, config) {
     this.onRunStart = function () {
         this._browsers = [];
         if (fs.existsSync(filename)) {
-            fs.unlinkSync(filename);    
+            fs.unlinkSync(filename);
         }
     };
 
@@ -41,15 +43,27 @@ var bambooReporter = function (baseReporterDecorator, config) {
 
 function clean(test) {
     var o = {
-        title: test.suite.join(' ') + ' on ' + test.browser, fullTitle: test.suite.join(' ') + ' ' + test.description + ' on ' + test.browser, duration: test.time
+        title       : test.suite.concat(test.description).join(' '),
+        fullTitle   : test.suite[0],
+        duration    : test.time
     };
     if (!test.success) {
-        o.error = test.log.join('\n');
+        o.error = '';
+        test.log.forEach(function(log) {
+          // translate sourcemap
+          log = fE(log);
+          o.error += log.split('\n').reduce(function(memo, line, i) {
+            // keep first line
+            line = line.split('<-');
+            if (line[1]) memo += '\n\tat' + line[1];
+            return memo;
+          })
+        });
     }
     return o;
 }
 
-bambooReporter.$inject = ['baseReporterDecorator', 'config.bambooReporter'];
+bambooReporter.$inject = ['baseReporterDecorator', 'config.bambooReporter', 'formatError'];
 
 // PUBLISH DI MODULE
 module.exports = {
