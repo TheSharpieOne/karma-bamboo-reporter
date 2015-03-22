@@ -51,11 +51,11 @@ function clean(test) {
         o.error = '';
         test.log.forEach(function(log) {
           // translate sourcemap
-          log = fE(log, '\t');
+          log = fE(log);
           o.error += log.split('\n').reduce(function(memo, line, i) {
             // keep first line
             line = line.split('<-');
-            if (line[1]) memo += '\n\t    at' + line[1];
+            if (line[1]) memo += '\n\tat' + line[1];
             return memo;
           })
         });
