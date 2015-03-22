@@ -1,9 +1,9 @@
 {
-  "name": "karma-bamboo-reporter",
-  "version": "0.0.2",
-  "author": "TheSharpieOne",
+  "name": "karma-bamboo-reporter2",
+  "version": "0.0.4",
+  "author": "Matt Fysh",
   "license": "MIT",
-  "homepage": "https://github.com/TheSharpieOne/karma-bamboo-reporter",
+  "homepage": "https://github.com/mattfysh/karma-bamboo-reporter",
   "description": "A Karma plugin. Report results in bamboo json format.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository":{
       "type": "git",
-      "url": "git://github.com/TheSharpieOne/karma-bamboo-reporter.git"
+      "url": "git://github.com/mattfysh/karma-bamboo-reporter.git"
   },
   "keywords": [
     "karma-plugin",
