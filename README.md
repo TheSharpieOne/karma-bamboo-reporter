@@ -18,5 +18,7 @@ bambooReporter:{
     filename: 'util.mocha.json' //optional, defaults to "mocha.json"
 },
 
+plugins: ['karma-bamboo-reporter']
+
 ...
 ```
