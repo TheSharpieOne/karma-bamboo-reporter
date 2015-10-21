@@ -1,5 +1,4 @@
-var fs = require('fs')
-    , filename = 'mocha.json';
+var fs = require('fs');
 
 var fE;
 
@@ -7,7 +6,7 @@ var bambooReporter = function (baseReporterDecorator, config, formatError) {
     fE = formatError;
     baseReporterDecorator(this);
 
-    filename = config && config.filename || filename;
+    var filename = config && config.filename || 'mocha.json';
 
     var results = {
         time: 0, tests: [], failures: [], passes: [], skips: []
