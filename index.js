@@ -56,7 +56,7 @@ function clean(test) {
             line = line.split('<-');
             if (line[1]) memo += '\n\tat' + line[1];
             return memo;
-          })
+          });
         });
     }
     return o;
