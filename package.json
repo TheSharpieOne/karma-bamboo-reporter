@@ -20,5 +20,8 @@
   ],
   "peerDependencies": {
     "karma": ">=0.9"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1"
   }
 }

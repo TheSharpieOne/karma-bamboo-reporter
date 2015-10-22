@@ -1,4 +1,6 @@
 var fs = require('fs');
+var path = require('path');
+var mkdirp = require('mkdirp');
 
 var fE;
 
@@ -32,6 +34,12 @@ var bambooReporter = function (baseReporterDecorator, config, formatError) {
         var obj = {
             stats: {tests: (result.success + result.failed), passes: result.success, failures: result.failed, duration: results.time }, failures: results.failures.map(clean), passes: results.passes.map(clean), skipped: results.skips.map(clean)
         };
+
+        // If the directoy we're supposed to write into does not exist, create it
+        var dir = path.dirname(filename);
+        if (dir !== '.') {
+            mkdirp.sync(dir);
+        }
 
         fs.writeFileSync(filename, JSON.stringify(obj, null, 2), 'utf-8');
         results = {
